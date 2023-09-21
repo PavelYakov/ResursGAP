@@ -1,0 +1,35 @@
+﻿@model ResursGAP.Models.Order
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="SenderCity">Город отправителя</label>
+        <select asp-for="SenderCity" asp-items="ViewBag.CityList"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="SenderAddress">Адрес отправителя</label>
+        <input asp-for="SenderAddress" class="form-control" />
+    </div>
+    
+      <div class="form-group">
+        <label asp-for="ReceiverCity">Город получателя</label>
+        <select asp-for="ReceiverCity" asp-items="ViewBag.CityList"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReceiverAddress">Адрес получателя</label>
+        <input asp-for="ReceiverAddress" class="form-control" />
+    </div>
+    
+    
+        
+    <div class="form-group">
+        <label asp-for="Weight">Масса груза</label>
+        <input asp-for="Weight" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryDate">Дата забора груза</label>
+        <input asp-for="DeliveryDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать заказ" class="btn btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ResursGAP.Models.Order>
+
+<h2>Список заказов</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер заказа</th>
+            <th>Город отправителя</th>
+            <th>Город получателя</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.SenderCity</td>
+                <td>@item.ReceiverCity</td>
+                
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.OrderId">Подробности</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ResursGAP.Models.City>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Город </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.CityId">Подробности</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
