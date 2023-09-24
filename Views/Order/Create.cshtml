@@ -1,5 +1,7 @@
 ﻿@model ResursGAP.Models.Order
 
+<link rel="stylesheet" href="~/css/Order.css">
+<script src="~/js/Order.js"></script>
 <form asp-action="Create">
     <div class="form-group">
         <label asp-for="SenderCity">Город отправителя</label>
@@ -18,13 +20,38 @@
         <label asp-for="ReceiverAddress">Адрес получателя</label>
         <input asp-for="ReceiverAddress" class="form-control" />
     </div>
-    
-    
+
+    <script>
+        function getAvailableTrucks() {
+            var weight = $("#Weight").val();
+
+            $.ajax({
+                url: "/Order/GetAvailableTrucks",
+                type: "GET",
+                data: { weight: weight },
+                success: function (data) {
+                    $("#availableTrucks").html(data);
+                },
+                error: function () {
+                    alert("Произошла ошибка при загрузке доступных грузовиков.");
+                }
+            });
+        }
+    </script>
         
     <div class="form-group">
         <label asp-for="Weight">Масса груза</label>
-        <input asp-for="Weight" class="form-control" />
+        <!--<input asp-for="Weight" class="form-control" />-->
+        <input asp-for="Weight" class="form-control" onchange="getAvailableTrucks()" />
     </div>
+
+   
+
+    <div id="availableTrucks">
+        @await Html.PartialAsync("_PartialTruck", new List<Truck>()) <!-- Пустой список при инициализации -->
+    </div>
+
+
     <div class="form-group">
         <label asp-for="DeliveryDate">Дата забора груза</label>
         <input asp-for="DeliveryDate" class="form-control" type="date" />

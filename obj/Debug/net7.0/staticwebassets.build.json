@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dlTJZiwW/yekF5VCGYNiVM+VvQXmZ4ymAmltA/sG/a4=",
+  "Hash": "jxw056g4zXMUYtlbiCdPxBaz5DUDVW0eTLZ47y68X5w=",
   "Source": "ResursGAP",
   "BasePath": "_content/ResursGAP",
   "Mode": "Default",
@@ -51,6 +51,40 @@
       "OriginalItemSpec": "D:\\source\\repos\\ResursGAP\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ResursGAP.bundle.scp.css"
     },
     {
+      "Identity": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\Home.css",
+      "SourceId": "ResursGAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\source\\repos\\ResursGAP\\wwwroot\\",
+      "BasePath": "_content/ResursGAP",
+      "RelativePath": "css/Home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Home.css"
+    },
+    {
+      "Identity": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\Order.css",
+      "SourceId": "ResursGAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\source\\repos\\ResursGAP\\wwwroot\\",
+      "BasePath": "_content/ResursGAP",
+      "RelativePath": "css/Order.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Order.css"
+    },
+    {
       "Identity": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\site.css",
       "SourceId": "ResursGAP",
       "SourceType": "Discovered",
@@ -83,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\source\\repos\\ResursGAP\\wwwroot\\js\\Order.js",
+      "SourceId": "ResursGAP",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\source\\repos\\ResursGAP\\wwwroot\\",
+      "BasePath": "_content/ResursGAP",
+      "RelativePath": "js/Order.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Order.js"
     },
     {
       "Identity": "D:\\source\\repos\\ResursGAP\\wwwroot\\js\\site.js",

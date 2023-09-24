@@ -21,12 +21,38 @@ namespace ResursGAP.Controllers
         // GET: OrderController
         public ActionResult Index()
         {
-            
+            //var orders = _dbContext.Orders.ToList();
+            var orders = _dbContext.Orders
+          .Include(o => o.Truck) // Включить связанный объект Truck
+          .ToList();
 
-            return View();
+            if (orders == null)
+            {
+
+                return NotFound();
+            }
+            var ordersViewModels = orders.Select(c => new Order
+            {
+                OrderId = c.OrderId,
+                SenderCity = c.SenderCity,
+                ReceiverCity = c.ReceiverCity
+            }).ToList();
+
+
+            return View(ordersViewModels);
+
+            
+        }
+        // Выбор машины на по массе груза
+        public IActionResult GetAvailableTrucks(double weight)
+        {
+            // Запросите доступные грузовики из базы данных на основе массы груза
+            var Trucks = _dbContext.Trucks.Where(t => t.WeightInTons >= weight).ToList();
+
+            // Отправьте список доступных грузовиков в частичное представление
+            return PartialView("_PartialTruck", Trucks);
         }
 
-       
         public ActionResult Details(int id)
         {
             var order = _dbContext.Orders.Find(id);
@@ -64,13 +90,14 @@ namespace ResursGAP.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Order order)
         {
-            
+            decimal deliveryCost = _deliveryService.CalculateDeliveryCost(order.SenderCity, order.ReceiverCity);
+            order.DeliveryCost = deliveryCost;
 
             if (ModelState.IsValid)
             {
                 // Рассчитываем стоимость доставки
-                decimal deliveryCost = _deliveryService.CalculateDeliveryCost(order.SenderCity, order.ReceiverCity);
-                order.DeliveryCost = deliveryCost;
+                //decimal deliveryCost = _deliveryService.CalculateDeliveryCost(order.SenderCity, order.ReceiverCity);
+                //order.DeliveryCost = deliveryCost;
 
                 
                 _dbContext.Orders.Add(order);
@@ -78,9 +105,9 @@ namespace ResursGAP.Controllers
 
                 return RedirectToAction("Index");
            }
-
-           //  Если модель недействительна, возвращаемся на страницу создания заказа
-            return View(order);
+           return RedirectToAction("Index");
+            //  Если модель недействительна, возвращаемся на страницу создания заказа
+            //return View(order);
         }
 
        

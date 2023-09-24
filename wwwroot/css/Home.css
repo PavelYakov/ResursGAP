@@ -1,0 +1,40 @@
+﻿/* Стиль для заголовка */
+.display-4 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Цвет текста */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Стиль для ссылок */
+a {
+    text-decoration: none; /* Убрать подчеркивание под ссылками */
+    color: #007bff; /* Цвет ссылок */
+}
+
+    a:hover {
+        color: #0056b3; /* Цвет ссылок при наведении */
+    }
+
+/* Стиль для абзацев */
+p {
+    font-size: 16px;
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+.links-container {
+    margin-top: 20px; /* Добавить отступ сверху */
+    font-family: Arial, sans-serif; /* Применить шрифт Arial или другой sans-serif */
+    font-size: 18px; /* Изменить размер шрифта */
+    text-align: center; /* Выровнять текст по центру */
+}
+
+    .links-container a {
+        text-decoration: none; /* Убрать подчеркивание у всех ссылок */
+        color: #333; /* Изменить цвет текста ссылок */
+        margin: 10px; /* Добавить отступы между ссылками */
+    }
+
+        .links-container a:hover {
+            color: #007bff; /* Изменить цвет текста ссылок при наведении курсора */
+        }

@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\ResursGAP.bundle.scp.css"
     },
     {
+      "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
+      "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\Order.css",
+      "PackagePath": "staticwebassets\\css\\Order.css"
+    },
+    {
       "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\js\\Order.js",
+      "PackagePath": "staticwebassets\\js\\Order.js"
     },
     {
       "Id": "D:\\source\\repos\\ResursGAP\\wwwroot\\js\\site.js",

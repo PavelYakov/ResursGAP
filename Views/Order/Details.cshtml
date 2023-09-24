@@ -4,6 +4,9 @@
 
 <p>Город отправления: @Model.SenderCity</p>
 <p>Город прибытия: @Model.ReceiverCity</p>
-<p>Машина: @Model.Truck</p>
-<p>Дата отправления: @Model.DeliveryDate</p>
+<p>Адресс прибытия: @Model.ReceiverAddress</p>
+<!--<p>Машина: Model.Truck.TruckId</p>-->
+<p>Маccа груза: @Model.Weight тонн</p>
+<p>Дата отправления: @Model.DeliveryDate.ToShortDateString()</p>
+<p>Стоимость доставки: @Model.DeliveryCost</p>
     

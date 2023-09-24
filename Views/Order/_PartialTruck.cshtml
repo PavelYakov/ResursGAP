@@ -1,0 +1,10 @@
+﻿@model List<Truck>
+
+<label for="TruckId">Выберите грузовик:</label>
+<select class="form-control">
+    <option value="">Выберите грузовик</option>
+    @foreach (var truck in Model)
+    {
+        <option value="@truck.TruckId">@truck.Name</option>
+    }
+</select>
