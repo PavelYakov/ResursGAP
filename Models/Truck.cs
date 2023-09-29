@@ -7,5 +7,8 @@
 
         public double WeightInTons { get; set; }
 
+        public double? LoadedWeightInTons { get; set; } // Масса, которая уже загружена в грузовик
+                                                       
+
     }
 }

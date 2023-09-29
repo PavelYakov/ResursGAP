@@ -20,3 +20,32 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
+
+.btn-hover-blue {
+    background-color: #6c757d; /* Серый цвет */
+    color: #fff; /* Белый цвет текста */
+    border-color: #6c757d; /* Цвет границы */
+    /* Эффект изменения цвета при наведении курсора */
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .btn-hover-blue:hover {
+        background-color: #007bff; /* Синий цвет при наведении курсора */
+        border-color: #007bff; /* Цвет границы при наведении курсора */
+    }
+
+.btn-hover-red {
+    background-color: #6c757d; /* Серый цвет */
+    color: #fff; /* Белый цвет текста */
+    border-color: #6c757d; /* Цвет границы */
+    /* Эффект изменения цвета при наведении курсора */
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .btn-hover-red:hover {
+        background-color: #ff0000; /* Красный цвет при наведении курсора */
+        border-color: #ff0000; /* Цвет границы при наведении курсора */
+        color: #fff;
+    }

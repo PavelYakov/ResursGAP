@@ -25,8 +25,35 @@ namespace ResursGAP.Service
             }
 
             // Расчет стоимости на основе зоновых цен
-            var cost = Math.Abs(sender.ZonePrice + receiver.ZonePrice); 
-            return cost;
+            var cost = Math.Abs(sender.ZonePrice - receiver.ZonePrice);
+            decimal deliveryCost = cost * sender.ZonePrice;
+            return deliveryCost;
         }
+
+        //public void CreateRouteForOrder(Order order)
+        //{
+        //    var cities = GetCitiesBetween(order.SenderCity, order.ReceiverCity);
+
+        //    foreach (var city in cities)
+        //    {
+        //        var route = new Models.Route
+        //        {
+        //            OrderId = order.OrderId,
+        //            CityId = city.CityId
+        //        };
+
+        //        _dbContext.Routes.Add(route);
+        //    }
+
+        //    _dbContext.SaveChanges();
+        //}
+        //public List<City> GetCitiesBetween(string senderCity, string receiverCity)
+        //{
+        //       var citiesBetween = _dbContext.Cities
+        //        .Where(c => c.CityId > senderCity && c.CityId < receiverCity)
+        //        .ToList();
+
+        //    return citiesBetween;
+        //}
     }
 }

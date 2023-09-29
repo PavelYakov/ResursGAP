@@ -1,0 +1,30 @@
+﻿@model ResursGAP.Models.RouteDetailsViewModel
+
+<h2>Детали маршрута для машины @Model.Truck.Name</h2>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Город назначения</th>
+                <th>Масса груза (тонны)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.ReceiverCity</td>
+                    <td>@order.Weight</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

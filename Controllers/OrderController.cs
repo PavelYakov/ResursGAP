@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ResursGAP.Models;
 using ResursGAP.Service;
+using Route = ResursGAP.Models.Route;
 
 namespace ResursGAP.Controllers
 {
@@ -21,8 +22,8 @@ namespace ResursGAP.Controllers
         // GET: OrderController
         public ActionResult Index()
         {
-            //var orders = _dbContext.Orders.ToList();
-            var orders = _dbContext.Orders
+            
+         var orders = _dbContext.Orders
           .Include(o => o.Truck) // Включить связанный объект Truck
           .ToList();
 
@@ -43,6 +44,7 @@ namespace ResursGAP.Controllers
 
             
         }
+
         // Выбор машины на по массе груза
         public IActionResult GetAvailableTrucks(double weight)
         {
@@ -57,7 +59,7 @@ namespace ResursGAP.Controllers
         {
             var order = _dbContext.Orders.Find(id);
 
-            
+          
             if (order == null)
             {
                 return NotFound(); 
@@ -72,44 +74,132 @@ namespace ResursGAP.Controllers
         {
             
             List<City> cities = _dbContext.Cities.ToList();
-           
+         
+
             List<SelectListItem> cityList = cities.Select(city => new SelectListItem
             {
                 Text = city.Name
             }).ToList();
            
             ViewBag.CityList = cityList;
+
            
-           
+
             return View();
         }
 
        
         // POST: OrderController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public IActionResult Create(Order order)
         {
+           
             decimal deliveryCost = _deliveryService.CalculateDeliveryCost(order.SenderCity, order.ReceiverCity);
             order.DeliveryCost = deliveryCost;
+            double weight = order.Weight;
+
+            decimal newDeliveryCost = deliveryCost * (decimal)order.Weight; 
+            order.DeliveryCost = newDeliveryCost;
+           
+            // Найдите подходящий грузовик на основе массы груза
+            Truck selectedTruck = _dbContext.Trucks.FirstOrDefault(truck => truck.WeightInTons >= weight && truck.LoadedWeightInTons + weight <= truck.WeightInTons);
+
+            
+
+            if (selectedTruck != null)
+            {
+                // Если найден подходящий грузовик, установите TruckId
+                order.TruckId = selectedTruck.TruckId;
+                selectedTruck.LoadedWeightInTons += weight;
+                _dbContext.SaveChanges();
+            }
+            else
+            {
+             
+               
+               ModelState.AddModelError(string.Empty, "Нет подходящего грузовика для указанной массы груза.");
+                return View(order);
+            }
 
             if (ModelState.IsValid)
             {
-                // Рассчитываем стоимость доставки
-                //decimal deliveryCost = _deliveryService.CalculateDeliveryCost(order.SenderCity, order.ReceiverCity);
-                //order.DeliveryCost = deliveryCost;
-
                 
                 _dbContext.Orders.Add(order);
-                _dbContext.SaveChanges();
+                 _dbContext.SaveChanges();
 
                 return RedirectToAction("Index");
-           }
-           return RedirectToAction("Index");
-            //  Если модель недействительна, возвращаемся на страницу создания заказа
-            //return View(order);
+              
+
+            }
+           
+
+            return RedirectToAction("Create");
+            
         }
 
-       
+       public IActionResult RouteDetails(int truckId)
+        {
+            // Получить все заказы, связанные с определенной машиной (truckId)
+            var ordersForTruck = _dbContext.Orders
+                .Where(o => o.TruckId == truckId)
+                .ToList();
+
+            
+            if (ordersForTruck.Count == 0)
+            {
+                ViewBag.Message = "Нет данных о заказах для этой машины.";
+                return View();
+            }
+
+            // Загрузить информацию о машине 
+            var truck = _dbContext.Trucks.FirstOrDefault(t => t.TruckId == truckId);
+
+            if (truck == null)
+            {
+                
+                return NotFound();
+            }
+
+            // Модель представления  ViewModel, которая  содержит информацию о машине и связанных заказах
+            var viewModel = new RouteDetailsViewModel
+            {
+                Truck = truck,
+                Orders = ordersForTruck
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+      
+        public IActionResult Delete(int orderId)
+        {
+            
+            var order = _dbContext.Orders.FirstOrDefault(o => o.OrderId == orderId);
+          
+            
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            var truck = _dbContext.Trucks.FirstOrDefault(t => t.TruckId == order.TruckId);
+
+            if (truck != null)
+            {
+                
+                truck.LoadedWeightInTons = truck.LoadedWeightInTons-order.Weight;
+            }
+
+            // Удалите заказ из базы данных
+            _dbContext.Orders.Remove(order);
+           
+            _dbContext.SaveChanges();
+
+            
+            return RedirectToAction("Index");
+        }
+
     }
 }

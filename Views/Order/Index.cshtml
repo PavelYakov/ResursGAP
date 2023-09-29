@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<ResursGAP.Models.Order>
-
+<body>
 <h2>Список заказов</h2>
 
-<table class="table">
+    
+    <script src="~/js/site.js" async></script>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Номер заказа</th>
@@ -12,6 +14,7 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -21,9 +24,14 @@
                 <td>@item.ReceiverCity</td>
                 
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.OrderId">Подробности</a>
+                        <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-hover-blue">Подробности</a>
+                </td>
+                <td>
+                    <a asp-controller="Order" asp-action="Delete" asp-route-orderId="@item.OrderId" class="btn btn-danger" 
+                    data-confirm="Вы уверены, что хотите удалить этот заказ?">Удалить</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+ </body>

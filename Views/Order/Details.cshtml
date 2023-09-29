@@ -2,11 +2,15 @@
 
 <h2>Подробности о Заказе</h2>
 
-<p>Город отправления: @Model.SenderCity</p>
-<p>Город прибытия: @Model.ReceiverCity</p>
-<p>Адресс прибытия: @Model.ReceiverAddress</p>
-<!--<p>Машина: Model.Truck.TruckId</p>-->
-<p>Маccа груза: @Model.Weight тонн</p>
-<p>Дата отправления: @Model.DeliveryDate.ToShortDateString()</p>
-<p>Стоимость доставки: @Model.DeliveryCost</p>
-    
+<p><span style="font-weight: bold;">Город отправления:</span><u> @Model.SenderCity</u></p>
+<p> <span style="font-weight: bold;">Город прибытия:</span> <u>@Model.ReceiverCity</u></p>
+<p><span style="font-weight: bold;">Адрес прибытия:</span> <u>@Model.ReceiverAddress</u></p>
+<p><span style="font-weight: bold;">Масса груза:</span> <u>@Model.Weight тонн</u></p>
+<p><span style="font-weight: bold;">Дата отправления:</span> <u>@Model.DeliveryDate.ToShortDateString()</u></p>
+<p><span style="font-weight: bold;">Стоимость доставки:</span><u> @Model.DeliveryCost</u> рублей</p>
+
+
+<td>
+   <a asp-action="RouteDetails" asp-route-truckId="@Model.TruckId" class="btn btn-primary btn-hover-blue">Детали маршрута</a>
+</td>
+

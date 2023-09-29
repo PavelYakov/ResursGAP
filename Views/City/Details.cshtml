@@ -5,5 +5,6 @@
 <p>Название города: @Model.Name</p>
 <p>Зональная цена: @Model.ZonePrice</p>
     <td>
-        <a asp-action="Index">Назад к списку</a>
+        
+    <p><a href="@Url.Action("Index", "City")" class="btn btn-secondary btn-hover-blue">Назад к списку</a></p>
     </td>

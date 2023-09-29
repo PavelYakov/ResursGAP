@@ -6,22 +6,27 @@
     <div class="form-group">
         <label asp-for="SenderCity">Город отправителя</label>
         <select asp-for="SenderCity" asp-items="ViewBag.CityList"></select>
+        <span asp-validation-for="SenderCity" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="SenderAddress">Адрес отправителя</label>
         <input asp-for="SenderAddress" class="form-control" />
+        <span asp-validation-for="SenderAddress" class="text-danger"></span>
     </div>
     
       <div class="form-group">
         <label asp-for="ReceiverCity">Город получателя</label>
         <select asp-for="ReceiverCity" asp-items="ViewBag.CityList"></select>
+        <span asp-validation-for="ReceiverCity" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="ReceiverAddress">Адрес получателя</label>
         <input asp-for="ReceiverAddress" class="form-control" />
+        <span asp-validation-for="ReceiverAddress" class="text-danger"></span>
+
     </div>
 
-    <script>
+   <!-- <script>
         function getAvailableTrucks() {
             var weight = $("#Weight").val();
 
@@ -37,26 +42,35 @@
                 }
             });
         }
-    </script>
+     </script> -->
+
+   
         
     <div class="form-group">
         <label asp-for="Weight">Масса груза</label>
         <!--<input asp-for="Weight" class="form-control" />-->
         <input asp-for="Weight" class="form-control" onchange="getAvailableTrucks()" />
+        <span asp-validation-for="Weight" class="text-danger"></span>
     </div>
 
    
 
-    <div id="availableTrucks">
-        @await Html.PartialAsync("_PartialTruck", new List<Truck>()) <!-- Пустой список при инициализации -->
+   <!-- <div id="availableTrucks">
+        await Html.PartialAsync("_PartialTruck", new List<Truck>()) 
     </div>
+    -->
 
+ 
+  
 
     <div class="form-group">
         <label asp-for="DeliveryDate">Дата забора груза</label>
         <input asp-for="DeliveryDate" class="form-control" type="date" />
+        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+
     </div>
     <div class="form-group">
         <input type="submit" value="Создать заказ" class="btn btn-primary" />
     </div>
+   
 </form>

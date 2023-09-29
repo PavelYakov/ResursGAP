@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<ResursGAP.Models.City>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             
@@ -16,7 +16,7 @@
                 <td>@item.Name</td>
                 
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.CityId">Подробности</a>
+                    <a asp-action="Details" asp-route-id="@item.CityId" class="btn btn-hover-blue">Подробности</a>
                 </td>
             </tr>
         }

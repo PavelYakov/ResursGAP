@@ -5,8 +5,10 @@
 <div class="text-center">
     <h1 class="display-4">Добро пожаловать</h1>
    <div class="links-container">
-        <p><a href="https://localhost:44378/Order/Create">Создать новый заказ</a></p>
-</div>
-    <p>Список <a href="https://localhost:44378/City/Index">городов</a>.</p>
-    <p>Список <a href="https://localhost:44378/Order/Index">заказов</a>.</p>
+        <p><a href="@Url.Action("Create", "Order")" class="btn btn-secondary btn-hover-red">Создать новый заказ</a></p>
+   </div>
+   
+    <p><a href="@Url.Action("Index", "City")" class="btn btn-secondary btn-hover-blue">Список городов</a></p>
+    <p><a href="@Url.Action("Index", "Order")" class="btn btn-secondary btn-hover-blue">Список заказов</a></p>
+
 </div>
